@@ -3,7 +3,7 @@ Display Flickr Images using Knockout and Bootstrap v4
 
 Knockout
 ========
-Knockout has been used a the JavaScript UI framework to display the images returned from the Flickr service call.
+Knockout has been used as the JavaScript UI framework to display the images returned from the Flickr service call.
 
 The file FlickrImages.js contains the Knockout view model that handles the loading of the service data, ui selection interactions 
 & saving/loading of selected items to local storage.

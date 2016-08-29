@@ -1,0 +1,50 @@
+<!doctype html>
+	<html>
+	<head>
+		<link rel="stylesheet" href="css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="css/FlickrImages.css"/>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/knockout.min.js"></script>
+		<script type = "text/javascript">
+		
+			var SAINSBURYS={
+				viewModels:{}
+			};
+
+			function cb ( data ) {
+			
+				window.onload=function() {
+					SAINSBURYS.viewModels.flickrImages=new SAINSBURYS.FlickrImages(data);
+					ko.applyBindings(SAINSBURYS.viewModels);
+				};
+				
+			}			
+
+			( function () {
+
+				
+				var tags = 'london';
+				var script = document . createElement ( 'script' );
+				script . src ='http://api.flickr.com/services/feeds/photos_public.gne?format=json&jsoncallback=cb&tags=' + tags;
+				document . head . appendChild ( script );
+				
+			})();
+
+		</script>
+		<script type="text/javascript" src="js/FlickrImages.js"></script>
+
+	</head>
+	<body>
+		<div class="container" data-bind="with:flickrImages">
+			<div class="jumbotron">
+				<h1 class="text-center" >FLICKR IMAGES</h1>
+			</div>
+			<ul class="flickrimages card-columns" data-bind="foreach:items">
+				<li class="card" data-bind="click:$parent.toggleSelection, css:selectedcss">
+					<img data-bind="attr:{src:media.m}"/>
+				</li>
+			</ul>
+		</div>
+	
+	</body>
+</html>
